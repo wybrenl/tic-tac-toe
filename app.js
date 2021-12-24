@@ -5,6 +5,9 @@ const gameBoard = (function() {
     let playerX = true;
     let count = 0;
     let restart = document.querySelector('.restart');
+    let X = document.querySelector('#X')
+    let O = document.querySelector('#O')
+
     const winner = [
         [0, 1, 2],
         [3, 4, 5],
@@ -23,12 +26,16 @@ const gameBoard = (function() {
                     case true :
                         board[element.id].innerHTML = "X"
                         playerX = false;
+                        O.classList.toggle('active')
+                        X.classList.toggle('active')
                         count++;
                         checkWinner()
                         break;
                     case false :
                         board[element.id].innerHTML = "O"
                         playerX = true;
+                        X.classList.toggle('active')
+                        O.classList.toggle('active')
                         count++;
                         checkWinner()
                         break;
@@ -64,6 +71,8 @@ const gameBoard = (function() {
             })
         playerX = true;
         count = 0;
+        X.classList.add('active');
+        O.classList.remove('active');
     }
 
     const getBoard = () => {
