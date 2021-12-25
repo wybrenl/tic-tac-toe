@@ -28,31 +28,29 @@ const gameBoard = (function() {
                         playerX = false;
                         O.classList.toggle('active')
                         X.classList.toggle('active')
-                        count++;
-                        checkWinner()
                         break;
                     case false :
                         board[element.id].innerHTML = "O"
                         playerX = true;
                         X.classList.toggle('active')
                         O.classList.toggle('active')
-                        count++;
-                        checkWinner()
                         break;
                 }
             }
+            count++
+            checkWinner()
         });
     });
     
     const checkWinner = () => {
         if (count == 9) {
-            alert("It's a tie")
-            restarter()
+            setTimeout(function(){alert("It's a tie");},50)
+            setTimeout(function(){restarter();}, 50);
         } else  {
             for (let i = 0; i <= 7; i++) {
                 if ((board[winner[i][0]].innerHTML == "X" || board[winner[i][0]].innerHTML == "O") && board[winner[i][0]].innerHTML == board[winner[i][1]].innerHTML && board[winner[i][1]].innerHTML == board[winner[i][2]].innerHTML) {
-                    playerX == false ? alert("Player X has won") : alert("Player O has won")
-                    restarter()
+                    playerX == false ? setTimeout(function() {alert("Player X has won");}, 50) : setTimeout(function() {alert("Player O has won");}, 50)
+                    setTimeout(function(){restarter();}, 50);
                     break;
                 }
             }
